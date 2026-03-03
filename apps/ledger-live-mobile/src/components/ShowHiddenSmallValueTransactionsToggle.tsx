@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Switch, Text } from "@ledgerhq/lumen-ui-rnative";
+import { Flex, Switch, Text } from "@ledgerhq/native-ui";
 import { useTranslation } from "~/context/Locale";
 
 type Props = Readonly<{
@@ -11,22 +11,11 @@ export default function ShowHiddenSmallValueTransactionsToggle({ enabled, onChan
   const { t } = useTranslation();
 
   return (
-    <Box
-      lx={{
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-        paddingHorizontal: "s16",
-        paddingBottom: "s16",
-      }}
-    >
-      <Text
-        typography="body2SemiBold"
-        lx={{ color: "muted", flex: 1, marginRight: "s16" }}
-      >
+    <Flex px={4} pb={4} flexDirection="row" alignItems="center" justifyContent="space-between">
+      <Text variant="paragraph" fontWeight="semiBold" color="neutral.c80" flex={1} mr={4}>
         {t("operationList.showHiddenSmallValueTransactions")}
       </Text>
-      <Switch checked={enabled} onCheckedChange={onChange} />
-    </Box>
+      <Switch checked={enabled} onChange={onChange} />
+    </Flex>
   );
 }
